@@ -1,0 +1,56 @@
+spring:
+  config:
+    activate:
+      on-profile: local
+
+  web:
+    resources:
+      add-mappings: false
+
+  datasource:
+    url: jdbc:mysql://localhost:3307/hypn?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&serverTimezone=Asia/Seoul
+    username: hypn
+    password: 1234
+
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        default_batch_fetch_size: 100
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+
+  servlet:
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 1000MB
+
+jwt:
+  secretKey: BhgdITgfD5fuXK6jfdsF28R1tA3RfDXGYeJq3kucpAw168iZYH
+  access:
+    expiration: 604800000
+    header: Authorization
+
+  refresh:
+    expiration: 1209600000
+    header: Authorization-refresh
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  packages-to-exclude: /im/hypn/app/controller
+
+logging:
+  level:
+    org:
+      hibernate:
+        orm:
+          jdbc:
+            bind: trace
+        SQL: DEBUG
+
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
