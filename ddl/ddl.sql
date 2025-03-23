@@ -1,4 +1,4 @@
-create table if not exists fooding.user
+create table if not exists hypn.user
 (
     id              bigint auto_increment primary key,
     role            enum ('ADMIN', 'USER') null,
